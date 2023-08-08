@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.min.css' %}">
+</head>
+<style>
+    .container {
+        margin: 1em;
+    }
+
+    hr {
+        padding-bottom: 27px;
+    }
+
+    h2 {
+        border-bottom: 2px solid rgba(51, 51, 51, 0.64);
+        min-width: 100px;
+        max-width: 100%;
+        padding: 4px;
+        width: auto;
+        margin: 0;
+    }
+
+    p.created_at {
+        font-size: 11px;
+        color: #6b6b6b;
+    }
+</style>
+<body>
+    <div class="container">
+
+        <h1>Hi there!</h1>
+        <p>This page is all about creating and registering models within Django using Python. In this case, we use the
+            article subject. A module has been made and registered in the admin area, and has properties with it in order to
+            create 'blog' posts.
+        </p>
+
+        <hr>
+
+    <h2>Articles</h2>
+
+    {% for article in articles %}
+
+        <h3 style="margin-top: 1em;">{{ article.title }}</h3>
+        <p>{{ article.body }}</p>
+        <p class="created_at">Article published on {{ article.created_at }}</p>
+
+        <hr style="border-top: 1px dotted #333;">
+
+    {% endfor %}
+
+    </div>
+
+<script src="{% static 'app/js/bootstrap.js' %}"></script>
+</body>
+</html>
