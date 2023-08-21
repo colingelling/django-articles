@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <title>Blog</title>
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.min.css' %}">
 </head>
 <style>
     .container {
@@ -34,25 +33,35 @@
 <body>
     <div class="container">
 
-        <h1>Hi there!</h1>
-        <p>This page is all about creating and registering models within Django using Python. In this case, we use the
-            article subject. A module has been made and registered in the admin area, and has properties with it in order to
-            create 'blog' posts.
-        </p>
+        <div class="card" style="border: none;">
+            <div class="card-body">
+                <h1>Hi there!</h1>
+                <p>This page is all about creating and registering models within Django using Python. In this case, we use the
+                    article subject. A module has been made and registered in the admin area, and has properties with it in order to
+                    create 'blog' posts.
+                </p>
+                <hr>
+            </div>
+        </div>
 
-        <hr>
+        <div class="card" style="border: none;">
+            <div class="card-body">
+                <h2>Articles</h2>
 
-    <h2>Articles</h2>
+                {% for article in articles %}
 
-    {% for article in articles %}
+                    <div class="card mt-3">
+                      <h5 class="card-header">{{ article.title }}</h5>
+                      <div class="card-body">
+                        <p class="card-text">{{ article.body }}</p>
+                        <p class="created_at">Article published on {{ article.created_at }}</p>
+                        <a href="#" class="btn btn-primary">View this article</a>
+                      </div>
+                    </div>
 
-        <h3 style="margin-top: 1em;">{{ article.title }}</h3>
-        <p>{{ article.body }}</p>
-        <p class="created_at">Article published on {{ article.created_at }}</p>
-
-        <hr style="border-top: 1px dotted #333;">
-
-    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
 
     </div>
 
