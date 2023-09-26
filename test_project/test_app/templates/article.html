@@ -1,11 +1,10 @@
 {% load static %}
-{% load introduction_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blog</title>
+    <title>Blog article</title>
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.css' %}">
 </head>
 <style>
@@ -21,34 +20,30 @@
 <body>
     <div class="container">
 
-        {% get_introduction "home_introduction" as intro %}
-        {% if introduction %}
+        {% for intro in introduction %}
+
             <div class="card" style="border: none;">
                 <div class="card-body">
                     <h1>{{ intro.title }}</h1>
                     <p>{{ intro.introduction_text }}</p>
-                    <hr>
+                    <hr style="margin: 0; padding: 0;">
                 </div>
             </div>
-        {% endif %}
 
+        {% endfor %}
 
         <div class="card" style="border: none;">
             <div class="card-body">
-                <h2>Articles</h2>
 
-                {% for article in articles %}
-
-                    <div class="card mt-3">
+                    <div class="card">
                       <h5 class="card-header">{{ article.title }}</h5>
                       <div class="card-body">
                         <p class="card-text">{{ article.short_story }}</p>
+                        <p class="card-text">{{ article.body }}</p>
                         <p class="created_at">Article published on {{ article.created_at }}</p>
-                        <a href="{% url 'article-view' article.id %}" class="btn btn-primary">View this article</a>
                       </div>
                     </div>
 
-                {% endfor %}
             </div>
         </div>
 
